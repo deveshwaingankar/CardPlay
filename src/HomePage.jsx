@@ -10,26 +10,29 @@ export default function HomePage() {
 
   return (
     <main className="h-screen w-screen overflow-y-scroll snap-y snap-mandatory font-sans text-white">
-  
-      {/* HERO */}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#D3D3D3" }}>
-        <div className="absolute top-10 w-full text-center z-10">
-          <h1 className="text-4xl font-bold">NFCX</h1>
-          <p className="text-gray-400 mt-2">Experience Connection, Redefined</p>
+
+      {/* HERO SECTION */}
+      
+      <section
+        className="snap-start h-screen w-screen flex items-center justify-center relative"
+        style={{ backgroundColor: "#D3D3D3" }}
+      >
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="w-full h-full bg-[radial-gradient(circle,rgba(255,255,255,0.2),transparent)]" />
         </div>
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.2),transparent)]"></div>
-
+        
         <motion.img
           src="/images/mystery-card.png"
           alt="mystery card"
-          className="h-[60vh] w-auto z-20 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+          className="h-[60vh] w-auto z-10 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
           style={{ scale, opacity }}
         />
       </section>
 
-      {/* HI CARD <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#ffffe0]">*/}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#FFFFE0" }}>  
+
+      {/* HI CARD */}
+      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#FFFFE0] text-black">
         <motion.img
           src="/images/card-hi.png"
           alt="hi card"
@@ -44,14 +47,14 @@ export default function HomePage() {
         </button>
       </section>
 
-      {/* HONORED CARD */}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#d1f5e0" }}>
+      {/* HELLO CARD */}
+      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#ffe4e6] text-black">
         <motion.img
-          src="/images/card-honored.png"
-          alt="honored card"
+          src="/images/card-hello.png"
+          alt="hello card"
           className="max-h-[50vh] w-auto shadow-xl"
         />
-        <p className="mt-4 text-center text-gray-800">Make a lasting impression.</p>
+        <p className="mt-4 text-center text-gray-800">A modern hello for modern times.</p>
         <button
           onClick={() => setShowModal(true)}
           className="mt-2 px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
@@ -60,14 +63,14 @@ export default function HomePage() {
         </button>
       </section>
 
-      {/* HELLO CARD */}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center" style={{ backgroundColor: "#ffe4e6" }}>
+      {/* HONORED CARD */}
+      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#d1f5e0] text-black">
         <motion.img
-          src="/images/card-hello.png"
-          alt="hello card"
+          src="/images/card-honored.png"
+          alt="honored card"
           className="max-h-[50vh] w-auto shadow-xl"
         />
-        <p className="mt-4 text-center text-gray-800">A modern hello for modern times.</p>
+        <p className="mt-4 text-center text-gray-800">Make a lasting impression.</p>
         <button
           onClick={() => setShowModal(true)}
           className="mt-2 px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
