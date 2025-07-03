@@ -22,6 +22,12 @@ html, body {
   overflow-y: auto; /* ✅ allow vertical scroll */
 }
 
+body {
+  background: linear-gradient(to bottom, #000000, #1c1c1c, #000000);
+  color: white;
+}
+
+
 #root {
   height: 100%;
 }
@@ -79,3 +85,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

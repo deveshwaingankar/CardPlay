@@ -1,104 +1,95 @@
-import { useState } from "react";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useAnimation, useViewportScroll, useTransform } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import Navbar from './Navbar';
 
-export default function HomePage() {
+export default function CardShowcase() {
   const { scrollY } = useViewportScroll();
   const scale = useTransform(scrollY, [0, 400], [1, 1.5]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  const [showModal, setShowModal] = useState(false);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.5 });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+    else controls.start("hidden");
+  }, [inView, controls]);
 
   return (
-    <main className="h-screen w-screen overflow-y-scroll snap-y snap-mandatory font-sans text-white">
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth font-sans text-white">
+      {/* NAV */}
+      <Navbar />
 
-      {/* HERO SECTION */}
-      
-      <section
-        className="snap-start h-screen w-screen flex items-center justify-center relative"
-        style={{ backgroundColor: "#D3D3D3" }}
-      >
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="w-full h-full bg-[radial-gradient(circle,rgba(255,255,255,0.2),transparent)]" />
-        </div>
+      {/* BACKGROUND WRAPPER */}
+      <div className="bg-black min-h-screen">
+        {/* HERO */}
+        <section className="w-screen h-screen snap-start flex flex-col items-center justify-center relative">
+          <div className="absolute top-16 text-center z-10">
+            <h1 className="text-4xl font-bold">Experience Connection, Redefined</h1>
+          </div>
+          <div className="absolute inset-0 " />
+          <motion.img
+            src="/images/mystery-card.png"
+            alt="Mystery Card"
+            style={{ scale, opacity }}
+            className="h-[40vh] w-auto z-20 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+          />
+        </section>
 
-        
-        <motion.img
-          src="/images/mystery-card.png"
-          alt="mystery card"
-          className="h-[60vh] w-auto z-10 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
-          style={{ scale, opacity }}
-        />
-      </section>
-
-
-      {/* HI CARD */}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#FFFFE0] text-black">
-        <motion.img
-          src="/images/card-hi.png"
-          alt="hi card"
-          className="max-h-[50vh] w-auto shadow-xl"
-        />
-        <p className="mt-4 text-center text-gray-800">Share your hello in a bold way.</p>
-        <button
-          onClick={() => setShowModal(true)}
-          className="mt-2 px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
+        {/* CARDS SECTION */}
+        <section
+          ref={ref}
+          className="w-screen h-screen snap-start flex flex-col items-center justify-center relative"
         >
-          Get Now
-        </button>
-      </section>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-center z-10"
+            initial="hidden"
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, scale: 0.5 },
+              visible: {
+                opacity: 1,
+                scale: 1,
+                transition: { staggerChildren: 0.3, delayChildren: 0.3 }
+              },
+            }}
+          >
+            {/* HI CARD */}
+            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="flex flex-col items-center">
+              <img src="/images/card-hi.png" className="h-[60vh] w-auto shadow-xl" alt="Hi Card" />
+              <p className="mt-4 text-center text-gray-200">Share your hello in a bold way.</p>
+            </motion.div>
+            {/* HELLO CARD */}
+            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="flex flex-col items-center">
+              <img src="/images/card-hello.png" className="h-[60vh] w-auto shadow-xl" alt="Hello Card" />
+              <p className="mt-4 text-center text-gray-200">A modern hello for modern times.</p>
+            </motion.div>
+            {/* HONORED CARD */}
+            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="flex flex-col items-center">
+              <img src="/images/card-honored.png" className="h-[60vh] w-auto shadow-xl" alt="Honored Card" />
+              <p className="mt-4 text-center text-gray-200">Make a lasting impression.</p>
+            </motion.div>
+          </motion.div>
 
-      {/* HELLO CARD */}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#ffe4e6] text-black">
-        <motion.img
-          src="/images/card-hello.png"
-          alt="hello card"
-          className="max-h-[50vh] w-auto shadow-xl"
-        />
-        <p className="mt-4 text-center text-gray-800">A modern hello for modern times.</p>
-        <button
-          onClick={() => setShowModal(true)}
-          className="mt-2 px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
-        >
-          Get Now
-        </button>
-      </section>
-
-      {/* HONORED CARD */}
-      <section className="snap-start h-screen w-screen flex flex-col items-center justify-center bg-[#d1f5e0] text-black">
-        <motion.img
-          src="/images/card-honored.png"
-          alt="honored card"
-          className="max-h-[50vh] w-auto shadow-xl"
-        />
-        <p className="mt-4 text-center text-gray-800">Make a lasting impression.</p>
-        <button
-          onClick={() => setShowModal(true)}
-          className="mt-2 px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
-        >
-          Get Now
-        </button>
-      </section>
+          <button
+            onClick={() => navigate("/cart")}
+            className="mt-10 px-6 py-3 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition z-20"
+          >
+            Get Now
+          </button>
+        </section>
+      </div>
 
       {/* FOOTER */}
-      <footer className="snap-start h-screen w-screen flex items-center justify-center text-sm text-gray-600 border-t border-gray-800 bg-black">
-        © {new Date().getFullYear()} NFCX. All rights reserved.
+      <footer className="w-screen h-[20vh] snap-start bg-black text-gray-400 flex flex-col items-center justify-center space-y-2 text-sm">
+        <p>© {new Date().getFullYear()} CardPlay. All rights reserved.</p>
+        <p>123 Innovation Street, Phoenix, AZ</p>
+        <p>contact@cardplay.com</p>
       </footer>
-
-      {/* MODAL */}
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
-          <div className="bg-zinc-800 p-6 rounded-xl max-w-md w-full">
-            <h3 className="text-xl font-bold mb-4">Order Your NFC Card</h3>
-            <p className="text-gray-400 mb-4">We will reach out to you with options. Fill this in later with a real form.</p>
-            <button
-              onClick={() => setShowModal(false)}
-              className="mt-2 px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
