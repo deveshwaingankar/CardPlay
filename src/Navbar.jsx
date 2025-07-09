@@ -17,16 +17,17 @@ export default function Navbar() {
       <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md flex justify-between items-center px-6 py-4">
         <button
           onClick={() => handleNavClick("/")}
-          className="text-2xl font-bold text-white hover:text-orange-500 transition"
+          className="text-2xl font-bold bg-gradient-to-r from-[#FFD700] to-[#C0C0C0] bg-clip-text text-transparent hover:from-orange-400 hover:to-yellow-300 transition"
         >
           CardPlay
         </button>
+
 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="text-white hover:text-orange-500 transition"
         >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-7 w-7" />}
         </button>
       </nav>
 

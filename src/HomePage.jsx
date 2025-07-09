@@ -20,23 +20,24 @@ export default function CardShowcase() {
   }, [inView, controls]);
 
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth font-sans text-white">
+    // <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth font-sans text-white">
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth font-sans text-white no-scrollbar">  
       {/* NAV */}
       <Navbar />
 
       {/* BACKGROUND WRAPPER */}
-      <div className="bg-black min-h-screen">
+      <div className="bg-transparent min-h-screen">
         {/* HERO */}
         <section className="w-screen h-screen snap-start flex flex-col items-center justify-center relative">
-          <div className="absolute top-16 text-center z-10">
+          {/* <div className="absolute top-16 text-center z-10">
             <h1 className="text-4xl font-bold">Experience Connection, Redefined</h1>
-          </div>
+          </div> */}
           <div className="absolute inset-0 " />
           <motion.img
-            src="/images/mystery-card.png"
+            src="/images/king-front1.png"
             alt="Mystery Card"
             style={{ scale, opacity }}
-            className="h-[40vh] w-auto z-20 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+            className="h-[60vh] w-auto z-20 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
           />
         </section>
 
@@ -60,17 +61,17 @@ export default function CardShowcase() {
           >
             {/* HI CARD */}
             <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="flex flex-col items-center">
-              <img src="/images/card-hi.png" className="h-[60vh] w-auto shadow-xl" alt="Hi Card" />
+              <img src="/images/yellow-card.png" className="h-[60vh] w-auto shadow-xl" alt="Hi Card" />
               <p className="mt-4 text-center text-gray-200">Share your hello in a bold way.</p>
             </motion.div>
             {/* HELLO CARD */}
             <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="flex flex-col items-center">
-              <img src="/images/card-hello.png" className="h-[60vh] w-auto shadow-xl" alt="Hello Card" />
+              <img src="/images/purple-card.png" className="h-[60vh] w-auto shadow-xl" alt="Hello Card" />
               <p className="mt-4 text-center text-gray-200">A modern hello for modern times.</p>
             </motion.div>
             {/* HONORED CARD */}
             <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }} className="flex flex-col items-center">
-              <img src="/images/card-honored.png" className="h-[60vh] w-auto shadow-xl" alt="Honored Card" />
+              <img src="/images/green-card.png" className="h-[60vh] w-auto shadow-xl" alt="Honored Card" />
               <p className="mt-4 text-center text-gray-200">Make a lasting impression.</p>
             </motion.div>
           </motion.div>

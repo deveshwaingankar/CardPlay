@@ -7,7 +7,12 @@ export default function Layout({ children }) {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black text-white">
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat text-white"
+      style={{
+        backgroundImage: "url('/images/home-background5.png')", // ⬅️ Set your global background here
+      }}
+    >
       <Navbar />
 
       <AnimatePresence mode="wait">
