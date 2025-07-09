@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 
 // Stripe publishable key
-const stripePromise = loadStripe("pk_test_XXXXXXXXXXXXXXXX");
+const stripePromise = loadStripe("heqk-whvc-czif-ltjr-clob");
 
 function CheckoutForm() {
   const stripe = useStripe();
