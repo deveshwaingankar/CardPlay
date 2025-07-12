@@ -19,7 +19,7 @@ export default function Navbar() {
           onClick={() => handleNavClick("/")}
           className="text-2xl font-bold text-white hover:text-orange-500 transition"
         >
-          CardPlay
+          AuraCards
         </button>
 
         <button

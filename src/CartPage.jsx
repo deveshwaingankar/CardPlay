@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const cards = [
   {
     id: "hi",
-    name: "Hi Card",
+    name: "Dosti Card",
     image: "/images/card-hi.png",
     price: 5,
     description:
@@ -14,7 +14,7 @@ const cards = [
   },
   {
     id: "hello",
-    name: "Hello Card",
+    name: "Rivaz Card",
     image: "/images/card-hello.png",
     price: 6,
     description:
@@ -22,7 +22,7 @@ const cards = [
   },
   {
     id: "honored",
-    name: "Honored Card",
+    name: "Vyapar Card",
     image: "/images/card-honored.png",
     price: 7,
     description:
@@ -69,15 +69,16 @@ export default function CartPage() {
 
         {/* CARD IMAGE */}
         <motion.img
-          key={selectedCard.id}
           src={selectedCard.image}
           alt={selectedCard.name}
-          className="drop-shadow-xl"
-          animate={{ rotateY: [15, -15, 15] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            height: "70vh", // 70% of viewport height
-            width: "auto",
+          className="h-[80vh] w-auto z-10"
+          animate={{
+            rotateY: [0, 30, -30, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         />
 
@@ -131,7 +132,7 @@ export default function CartPage() {
             <span>${total.toFixed(2)}</span>
           </div>
           <button
-            onClick={() => alert("Proceeding to checkout...")}
+            onClick={() => navigate("/checkout")}
             className="mt-2 w-full px-4 py-2 bg-orange-500 text-black rounded-xl hover:bg-orange-600 transition"
           >
             Proceed to Checkout

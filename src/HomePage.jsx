@@ -20,23 +20,23 @@ export default function CardShowcase() {
   }, [inView, controls]);
 
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth font-sans text-white">
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth font-sans text-white no-scrollbar">  
       {/* NAV */}
       <Navbar />
 
       {/* BACKGROUND WRAPPER */}
-      <div className="bg-black min-h-screen">
+      {/* <div className="relative z-50 bg-red-500 text-black p-10">
+        <h1>This should show up!</h1>
+      </div> */}
+      <div className="bg-transparent min-h-screen">
         {/* HERO */}
         <section className="w-screen h-screen snap-start flex flex-col items-center justify-center relative">
-          <div className="absolute top-16 text-center z-10">
-            <h1 className="text-4xl font-bold">Experience Connection, Redefined</h1>
-          </div>
           <div className="absolute inset-0 " />
           <motion.img
-            src="/images/mystery-card.png"
+            src="/images/king-front.png"
             alt="Mystery Card"
             style={{ scale, opacity }}
-            className="h-[40vh] w-auto z-20 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+            className="h-[60vh] w-auto z-20 drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
           />
         </section>
 
